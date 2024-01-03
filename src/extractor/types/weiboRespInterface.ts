@@ -21,7 +21,7 @@ interface WeiboBase {
     is_paid: boolean;
     mblog_vip_type: number;
     user: User;
-    annotations: WeiboAnnotation[];
+    annotations: Annotation[];
     reposts_count: number;
     comments_count: number;
     reprint_cmt_count: number;
@@ -80,7 +80,18 @@ interface WeiboBase {
 }
 
 export interface Weibo extends WeiboBase {
-    retweeted_status: WeiboBase;
+    retweeted_status?: WeiboBase;
+}
+
+export interface LongText {
+    created_at: string;
+    appid: number;
+    annotations: Annotation[];
+    mblog_vip_type: number;
+    user: User;
+    weibo_position: number;
+    show_attitude_bar: number;
+    content: string;
 }
 
 export interface AlchemyParams {
@@ -93,7 +104,8 @@ export interface AlchemyParams {
     author_type_enable: boolean;
 }
 
-export interface WeiboAnnotation {
+export interface Annotation {
+    shooting?: number;
     client_mblogid?: string;
     mapi_request?: boolean;
     source_text?: string;
