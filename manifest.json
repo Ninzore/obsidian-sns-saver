@@ -1,0 +1,11 @@
+{
+	"id": "sample-SNS",
+	"name": "SNS Plugin",
+	"version": "0.0.1",
+	"minAppVersion": "0.15.0",
+	"description": "Easily save SNS posts to Obsidian.",
+	"author": "Obsidian",
+	"authorUrl": "https://obsidian.md",
+	"fundingUrl": "https://obsidian.md/pricing",
+	"isDesktopOnly": false
+}
