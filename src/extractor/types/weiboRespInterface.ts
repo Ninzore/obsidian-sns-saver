@@ -7,6 +7,7 @@ interface WeiboBase {
     can_edit: boolean;
     show_additional_indication: number;
     text: string;
+    longText?: LongText;
     source_allowclick: number;
     source_type: number;
     source: string;
