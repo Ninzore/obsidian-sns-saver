@@ -9,7 +9,7 @@ export class Extractor {
 
     async run() {
         try {
-            const resp = await this.request(this.url);
+            const resp = await this.request();
             const snsContent = this.extract(resp);
             if (snsContent.content.some(content => content.type !== 'text')) {
                 await this.download(snsContent);
@@ -22,9 +22,9 @@ export class Extractor {
         }
     }
 
-    async request(url: string): Promise<any> {
+    async request(): Promise<any> {
         try {
-            return await this._request(url);
+            return await this._request(this.url);
         }
         catch (e) {
             console.error(e);
