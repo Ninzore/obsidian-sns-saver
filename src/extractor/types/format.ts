@@ -1,7 +1,7 @@
 export interface SnsContent {
     title: string;
     author: string;
-    content: Content[];
+    content: Content<'text' | 'image' | 'video'>[];
     date: Date;
     source: string;
 }
@@ -18,8 +18,10 @@ export interface Video {
     url: string;
 }
 
-export interface Content extends Text, Image, Video {
-    type: 'text' | 'image' | 'video';
+export interface Content<T extends 'text' | 'image' | 'video'> {
+    type: T;
+    text?: T extends 'text' ? string : never;
+    url?: T extends 'image' | 'video' ? string : never;
 }
 
 export interface MarkdownConent {
