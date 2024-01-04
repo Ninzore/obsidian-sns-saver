@@ -10,7 +10,7 @@ export class Extractor {
     async run() {
         try {
             const resp = await this.request(this.url);
-            const snsContent = await this.extract(resp);
+            const snsContent = this.extract(resp);
             if (snsContent.content.some(content => content.type !== 'text')) {
                 await this.download(snsContent);
             }
@@ -32,9 +32,9 @@ export class Extractor {
         }
     }
 
-    async extract(response: any): Promise<SnsContent> {
+    extract(response: any): SnsContent {
         try {
-            return await this._extract(response);
+            return this._extract(response);
         }
         catch (e) {
             console.error(e);
@@ -98,7 +98,7 @@ export class Extractor {
     * @param {string} url
     * this method should be implemented by subclasses
     */
-    async _extract(response: any): Promise<SnsContent> {
+    _extract(response: any): SnsContent {
         throw new Error("Not implemented");
     }
 }
