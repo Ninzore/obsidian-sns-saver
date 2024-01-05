@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { Extractor } from './commonExtractor';
 import { Weibo } from './types/weiboRespInterface';
-import { SnsContent } from './types/format';
+import { SnsContent, Content } from './types/format';
+import { request } from './utils';
 
 const MOBILE_WEIBO_REG = new RegExp(/weibo\.(com|cn)\/(status|detail)\/(\d{16})/);
 
@@ -9,19 +9,17 @@ export class WeiboExtractor extends Extractor {
 
     /**
      * @param {string} id weibo id
-     * @returns {} no return
      */
     async getSingleWeibo(id: string): Promise<Weibo> {
-        return axios.get(
-            "https://api.weibo.cn/2/guest/statuses_show",
-            {
-                params: {
-                    id: id,
-                    isGetLongText: 1
-                }
+        return request('https://api.weibo.cn/2/guest/statuses_show', {
+            method: 'GET',
+            params: {
+                id: id,
+                isGetLongText: 1,
             }
+        }
         ).then(res => {
-            return res.data as Weibo;
+            return res as Weibo;
         });
     }
 

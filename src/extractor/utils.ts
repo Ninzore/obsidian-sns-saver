@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import axios from 'axios';
 import { requestUrl } from 'obsidian';
 
 const MAX_SIZE = 100 * 1024 * 1024;
@@ -54,11 +53,12 @@ export async function request(
 
 export async function download(url: string, filepath: string): Promise<fs.PathLike> {
     return new Promise((resolve, reject) => {
-        axios.get(url, {
+        request(url, {
+            method: 'GET',
             responseType: 'stream',
             headers: {
                 'User-Agent': UA,
-                'accept': 'image/jpeg,image/jpg,image/png,,image/gif,image/avif,image/webp,image/apng'
+                'Accept': '*/*'
             }
         }).then(res => {
             const mime = res.headers['content-type'];
