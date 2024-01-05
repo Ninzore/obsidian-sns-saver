@@ -1,4 +1,4 @@
-import { SnsContent, MarkdownConent } from "./types/format";
+import { SnsContent, MarkdownConent } from './types/format';
 
 export class Formatter {
     async format(snsContent: SnsContent): Promise<MarkdownConent> {

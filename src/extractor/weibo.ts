@@ -1,7 +1,7 @@
 import { Extractor } from './commonExtractor';
-import { Weibo } from './types/weiboRespInterface';
-import { SnsContent, Content } from './types/format';
-import { request } from './utils';
+import { Weibo } from './interfaces/weiboRespInterface';
+import { SnsContent, Content } from '../types/format';
+import { request } from '../utils';
 
 const MOBILE_WEIBO_REG = new RegExp(/weibo\.(com|cn)\/(status|detail)\/(\d{16})/);
 
