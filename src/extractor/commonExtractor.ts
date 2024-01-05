@@ -1,5 +1,5 @@
-import { SnsContent } from "./types/format";
-import { download } from './utils';
+import { SnsContent } from "../types/format";
+import { download } from '../utils';
 
 export class Extractor {
     constructor(
